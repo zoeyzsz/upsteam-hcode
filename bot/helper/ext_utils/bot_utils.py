@@ -191,6 +191,7 @@ def get_readable_message():
                 msg += f"\n<b>🗃️ Size : {download.size()}</b>"
                 msg += f"\n<b>🐍 Python : {download.eng()}</b>"
                 msg += "\n\n"
+                msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
         bmsg = f"\n\n<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
