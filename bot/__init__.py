@@ -480,7 +480,7 @@ try:
     FSUB_CHANNEL_ID = int(FSUB_CHANNEL_ID)
 except KeyError:
     log_info("CHANNEL_ID not provided!")
-    FSUB_CHANNEL_ID =
+    FSUB_CHANNEL_ID = -1001347703925
 try:
     BOT_PM = getConfig('BOT_PM')
     BOT_PM = BOT_PM.lower() == 'true'

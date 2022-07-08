@@ -48,7 +48,7 @@ def stats(update, context):
             f'<b>⏰ Uptime : {currentTime}</b>\n'\
             f'<b>🖥 OS Uptime : {osUptime}</b>\n\n'\
 			f'<b>📊 Data Usage 📊</b>\n\n'\
-            f'<b>💨 Hard Disk : {total}</b>\n'\
+            f'<b>💨 Storage : {total}</b>\n'\
             f'<b>📈 Used : {used}</b>\n<b>📉 Free : {free}</b>\n'\
             f'<b>📤 Upload : {sent}</b>\n<b>📥 Download : {recv}</b>\n\n'\
 			f'<b>📊 Performance Meter 📊</b>\n\n'\
