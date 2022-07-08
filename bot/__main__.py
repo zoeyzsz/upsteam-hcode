@@ -179,21 +179,21 @@ help = telegraph.create_page(
     )["path"]
 
 help_string = f'''
-/{BotCommands.PingCommand}: Check Active
+/{BotCommands.PingCommand} : Check Active
 
-/{BotCommands.AuthorizeCommand}: Authorize A Chat or User to Use The Bot
+/{BotCommands.AuthorizeCommand} : Authorize A Chat or User to Use The Bot
 
-/{BotCommands.UnAuthorizeCommand}: Unauthorize A Chat or User to Use The Bot
+/{BotCommands.UnAuthorizeCommand} : Unauthorize A Chat or User to Use The Bot
 
-/{BotCommands.AuthorizedUsersCommand}: Show Authorized Chat or Users
+/{BotCommands.AuthorizedUsersCommand} : Show Authorized Chat or Users
 
-/{BotCommands.AddSudoCommand}: Add Sudo Permission
+/{BotCommands.AddSudoCommand} : Add Sudo Permission
 
-/{BotCommands.RmSudoCommand}: Remove Sudo Permission
+/{BotCommands.RmSudoCommand} : Remove Sudo Permission
 
-/{BotCommands.RestartCommand}: Restart System
+/{BotCommands.RestartCommand} : Restart System
 
-/{BotCommands.LogCommand}: Get .Log For Getting Crash Reports
+/{BotCommands.LogCommand} : Get .Log For Getting Crash Reports
 '''
 
 def bot_help(update, context):
