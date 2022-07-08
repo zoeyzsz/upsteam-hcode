@@ -45,7 +45,7 @@ class EngineStatus:
     STATUS_MEGA = "MegaSDK V.3.12.0"
     STATUS_QB = "qBittorrent V.4.3.9"
     STATUS_TG = "Pyrogram V.2.0.27"
-    STATUS_YT = "YT-DLP V.22.5.18"
+    STATUS_YT = "YTDL V.22.5.18"
     STATUS_EXT = "Extract | pExtract"
     STATUS_SPLIT = "FFmpeg V.2.9.1"
     STATUS_ZIP = "p7zip V.16.02"
