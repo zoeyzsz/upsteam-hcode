@@ -86,13 +86,13 @@ class QbDownloader:
                 buttons = button_build.ButtonMaker()
                 gid = self.ext_hash[:12]
                 if WEB_PINCODE:
-                    buttons.buildbutton("Select Files", f"{BASE_URL}/app/files/{self.ext_hash}")
+                    buttons.buildbutton("🔖 Select Files", f"{BASE_URL}/app/files/{self.ext_hash}")
                     buttons.sbutton("Pincode", f"qbs pin {gid} {pincode}")
                 else:
-                    buttons.buildbutton("Select Files", f"{BASE_URL}/app/files/{self.ext_hash}?pin_code={pincode}")
-                buttons.sbutton("Done Selecting", f"qbs done {gid} {self.ext_hash}")
+                    buttons.buildbutton("🔖 Select Files", f"{BASE_URL}/app/files/{self.ext_hash}?pin_code={pincode}")
+                buttons.sbutton("✅ Done Selecting", f"qbs done {gid} {self.ext_hash}")
                 QBBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
-                msg = "Your download paused. Choose files then press Done Selecting button to start downloading."
+                msg = "🚩 Your Download Paused. Choose Files & Press Done Selecting Button to Start Downloading ⤵️"
                 sendMarkup(msg, self.__listener.bot, self.__listener.message, QBBUTTONS)
             else:
                 sendStatusMessage(self.__listener.message, self.__listener.bot)
@@ -212,7 +212,7 @@ class QbDownloader:
             LOGGER.info(f"Cancelling Seed: {self.__name}")
             self.client.torrents_pause(torrent_hashes=self.ext_hash)
         else:
-            self.__onDownloadError('Download stopped by user!')
+            self.__onDownloadError('Download Stopped by User Himself')
 
 def get_confirm(update, context):
     query = update.callback_query
