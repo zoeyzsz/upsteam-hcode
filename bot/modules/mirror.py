@@ -32,7 +32,7 @@ from bot.helper.mirror_utils.status_utils.upload_status import UploadStatus
 from bot.helper.mirror_utils.status_utils.tg_upload_status import TgUploadStatus
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
 from bot.helper.mirror_utils.upload_utils.pyrogramEngine import TgUploader
-from bot.helper.telegram_helper.bot_commands import BotCommands
+from bot.helper.telegram_helper.bot_commands import BotCommands, CMD_INDEX
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages
 from bot.helper.telegram_helper.button_build import ButtonMaker
@@ -439,26 +439,26 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
         help_msg += "\n\n<b>🚩How to Mirror ?</b>"
         help_msg += "\n<code>/command</code> {Link}"
         help_msg += "\n<b>Example :</b>"
-        help_msg += "\n<code>/{BotCommands.MirrorCommand} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/open_gapps-arm64-11.0-pico-20220503.zip</code>"
+        help_msg += "\n<code>/{BotCommands.MirrorCommand}{CMD_INDEX} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/open_gapps-arm64-11.0-pico-20220503.zip</code>"
         help_msg += "\n\n<b>🚩How to Mirror With Custom Name?</b>"
         help_msg += "\n<code>/command</code> {Link} |{New Name}"
         help_msg += "\n<b>Note : Add | Before Link</b>"
         help_msg += "\n<b>Example :</b>"
-        help_msg += "\n<code>/{BotCommands.MirrorCommand} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/open_gapps-arm64-11.0-pico-20220503.zip |X.zip</code>"
+        help_msg += "\n<code>/{BotCommands.MirrorCommand}{CMD_INDEX} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/open_gapps-arm64-11.0-pico-20220503.zip |X.zip</code>"
         help_msg += "\n\n<b>🚩How to Mirror With Unzip Mirror / Extract With Password?</b>"
         help_msg += "\n<code>/command</code> {Link} |pswd: {Your Password}"
         help_msg += "\n<b>Example :</b>"
-        help_msg += "\n<code>/{BotCommands.UnzipMirrorCommand} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/Wallpapers.zip |pswd: qwerty123</code>"
+        help_msg += "\n<code>/{BotCommands.UnzipMirrorCommand}{CMD_INDEX} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/Wallpapers.zip |pswd: qwerty123</code>"
         help_msg += "\n\n<b>🚩How to Mirror With qBitTorrent?</b>"
         help_msg += "\n<b>Example :</b>"
-        help_msg += "\n<code>/{BotCommands.QbMirrorCommand} https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
+        help_msg += "\n<code>/{BotCommands.QbMirrorCommand}{CMD_INDEX} https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
         help_msg += "\n\n<b>🚩How to Mirror Seeding & Selection File With qBitTorrent?</b>"
         help_msg += "\n<b>Note : Add s / d After Command</b>"
         help_msg += "\n<b>Example :</b>"
         help_msg += "\n<b>- For Selection Files</b>"
-        help_msg += "\n<code>/{BotCommands.QbMirrorCommand} s https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
+        help_msg += "\n<code>/{BotCommands.QbMirrorCommand}{CMD_INDEX} s https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
         help_msg += "\n\n<b>- For Seeding Files</b>"
-        help_msg += "\n<code>/{BotCommands.QbMirrorCommand} d https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
+        help_msg += "\n<code>/{BotCommands.QbMirrorCommand}{CMD_INDEX} d https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
         return sendMessage(help_msg, bot, message)
 
     LOGGER.info(link)

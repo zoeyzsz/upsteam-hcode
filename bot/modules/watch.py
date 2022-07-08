@@ -74,7 +74,7 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
         help_msg += "\n\n🚩<b>How to Mirror With YTDL / YouTube ?</b>"
         help_msg += "\n<code>/command</code> {link}"
         help_msg += "\n<b>Example :</b>"
-        help_msg += "\n<code>/{BotCommands.WatchCommand} https://youtu.be/TiQ7aug-GwI</code>"
+        help_msg += "\n<code>/{BotCommands.WatchCommand}{CMD_INDEX} https://youtu.be/TiQ7aug-GwI</code>"
         help_msg += "\n<b>Note : Choose Your Quality/Type of Files</b>"
         return sendMessage(help_msg, bot, message)
 
