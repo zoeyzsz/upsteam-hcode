@@ -177,7 +177,8 @@ def get_readable_message():
                 except:
                     pass
                 msg += f"\n<b>🔰 GID : {download.gid()}</b>" \
-                       f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                       f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>" \
+                       f"\n\n"
 
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>🗃️ Size : {download.size()}</b>"
@@ -187,10 +188,11 @@ def get_readable_message():
                 msg += f"\n<b>🌧 Ratio : {round(download.torrent_info().ratio, 3)}</b>"
                 msg += f" | <b>⏰ Time : {get_readable_time(download.torrent_info().seeding_time)}</b>"
                 msg += f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n\n"
             else:
                 msg += f"\n<b>🗃️ Size : {download.size()}</b>"
                 msg += f"\n<b>🐍 Python : {download.eng()}</b>"
-                msg += f"\n\n"
+                msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
         bmsg = f"\n\n<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
