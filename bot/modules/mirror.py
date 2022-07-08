@@ -215,7 +215,7 @@ class MirrorListener:
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
-                fmsg = '\n<b>📄 Your Files :</b>\n'
+                fmsg = '\n\n<b>📄 Link of Your Files ⤵️</b>\n'
                 for index, (link, name) in enumerate(files.items(), start=1):
                     fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                     if len(fmsg.encode() + msg.encode()) > 4000:
@@ -480,9 +480,10 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"<b>Use</b> /{BotCommands.CloneCommand} <b>To Clone Google Drive File/Folder</b>\n\n"
-            gmsg += f"<b>Use</b> /{BotCommands.ZipMirrorCommand} <b>To Make .zip of Google Drive Folder</b>\n\n"
-            gmsg += f"<b>Use</b> /{BotCommands.UnzipMirrorCommand} <b>To Extracts Google Drive Archive File</b>"
+            gmsg = f"<b>🚫 You Are Using Link From Google Drive  🚫\n______________________________</b>"
+            gmsg += f"\n\n<b>🚩 Use</b> /{BotCommands.ZipMirrorCommand} <b>To Make .zip of Google Drive Folder</b>"
+            gmsg += f"\n\n<b>🚩 Use</b> /{BotCommands.ZipMirrorCommand} <b>To Make .zip of Google Drive Folder</b>"
+            gmsg += f"\n\n<b>🚩 Use</b> /{BotCommands.UnzipMirrorCommand} <b>To Extracts Google Drive Archive File</b>"
             sendMessage(gmsg, bot, message)
         else:
             Thread(target=add_gd_download, args=(link, listener, is_gdtot)).start()

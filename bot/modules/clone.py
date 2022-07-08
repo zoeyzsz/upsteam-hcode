@@ -97,7 +97,7 @@ def _clone(message, bot, multi=0):
             sleep(4)
             Thread(target=_clone, args=(nextmsg, bot, multi)).start()
         if files <= 20:
-            msg = sendMessage(f"📄 <b>Cloning, Please Wait. . .🔃</b>\n<b>🔗 Your Link :</b> <code>{link}</code>", bot, message)
+            msg = sendMessage(f"📄 <b>Cloning. Please Wait. . .🔃</b>\n<b>🔗 Your Link :</b> <code>{link}</code>", bot, message)
             result, button = gd.clone(link)
             deleteMessage(bot, msg)
         else:

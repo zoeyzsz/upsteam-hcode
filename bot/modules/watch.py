@@ -95,9 +95,9 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
             video_format = f"bv*[height<={i}][ext=webm]"
             buttons.sbutton(f"{i}-webm", f"qu {msg_id} {video_format} t")
         buttons.sbutton("Audios", f"qu {msg_id} audio t")
-        buttons.sbutton("Best Videos", f"qu {msg_id} {best_video} t")
-        buttons.sbutton("Best Audios", f"qu {msg_id} {best_audio} t")
-        buttons.sbutton("Cancel", f"qu {msg_id} cancel")
+        buttons.sbutton("👍 Best Videos", f"qu {msg_id} {best_video} t")
+        buttons.sbutton("👍 Best Audios", f"qu {msg_id} {best_audio} t")
+        buttons.sbutton("🚫 Cancel 🚫", f"qu {msg_id} cancel")
         YTBUTTONS = InlineKeyboardMarkup(buttons.build_menu(3))
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args]
         bmsg = sendMarkup('Choose Playlist Videos Quality:', bot, message, YTBUTTONS)
@@ -144,9 +144,9 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
                 else:
                     buttons.sbutton(str(_format), f"qu {msg_id} dict {_format}")
         buttons.sbutton("Audios", f"qu {msg_id} audio")
-        buttons.sbutton("Best Video", f"qu {msg_id} {best_video}")
-        buttons.sbutton("Best Audio", f"qu {msg_id} {best_audio}")
-        buttons.sbutton("Cancel", f"qu {msg_id} cancel")
+        buttons.sbutton("👍 Best Video", f"qu {msg_id} {best_video}")
+        buttons.sbutton("👍 Best Audio", f"qu {msg_id} {best_audio}")
+        buttons.sbutton("🚫 Cancel 🚫", f"qu {msg_id} cancel")
         YTBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args, formats_dict]
         bmsg = sendMarkup('Choose Video Quality:', bot, message, YTBUTTONS)
@@ -217,10 +217,10 @@ def select_format(update, context):
     try:
         task_info = listener_dict[task_id]
     except:
-        return editMessage("This is an old task", msg)
+        return editMessage("🚫 This Is Old Task 🚫", msg)
     uid = task_info[1]
     if user_id != uid and not CustomFilters._owner_query(user_id):
-        return query.answer(text="This task is not for you!", show_alert=True)
+        return query.answer(text="🚫 You Can't Use This, Because it's Not Your Task 🚫", show_alert=True)
     elif data[2] == "dict":
         query.answer()
         qual = data[3]
@@ -228,7 +228,7 @@ def select_format(update, context):
         return
     elif data[2] == "back":
         query.answer()
-        return editMessage('Choose Video Quality:', msg, task_info[4])
+        return editMessage('🚩 Choose Video Quality ⤵️', msg, task_info[4])
     elif data[2] == "audio":
         query.answer()
         if len(data) == 4:
@@ -239,7 +239,7 @@ def select_format(update, context):
         return
     elif data[2] == "cancel":
         query.answer()
-        editMessage('Task has been cancelled.', msg)
+        editMessage('🚫 Task Has Been Cancelled 🚫', msg)
     else:
         query.answer()
         listener = task_info[0]
@@ -263,7 +263,7 @@ def _auto_cancel(msg, msg_id):
     sleep(120)
     try:
         del listener_dict[msg_id]
-        editMessage('Timed out! Task has been cancelled.', msg)
+        editMessage('🚫 Timed Out. Task Has Been Cancelled 🚫', msg)
     except:
         pass
 

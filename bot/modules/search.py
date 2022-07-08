@@ -53,7 +53,7 @@ def torser(update, context):
     if SEARCH_API_LINK is  None and SEARCH_PLUGINS is None:
         sendMessage("No API link or search PLUGINS added for this function", context.bot, update.message)
     elif len(context.args) == 0 and SEARCH_API_LINK is None:
-        sendMessage("🚫 <b>Send Me a Keyword to Search Torrents</b> 🚫", context.bot, update.message)
+        sendMessage("🚫 <b>Send Me a Keyword</b> 🚫", context.bot, update.message)
     elif len(context.args) == 0:
         buttons.sbutton('Trending', f"torser {user_id} apitrend")
         buttons.sbutton('Recent', f"torser {user_id} apirecent")
@@ -104,11 +104,11 @@ def torserbut(update, context):
                     endpoint = 'Trending'
                 elif method == 'apirecent':
                     endpoint = 'Recent'
-                editMessage(f"<b>Listing {endpoint} Items...\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
+                editMessage(f"<b>Listing {endpoint} Items...\n🌐 Torrent Site :- {SITES.get(site)}</b>", message)
             else:
-                editMessage(f"<b>Searching for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>", message)
+                editMessage(f"<b>🔎 Searching For {key}\n🌐 Torrent Site :- {SITES.get(site)}</b>", message)
         else:
-            editMessage(f"<b>Searching for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>", message)
+            editMessage(f"<b>🔎 Searching For {key}\n🌐 Torrent Site :- {site.capitalize()}</b>", message)
         Thread(target=_search, args=(key, site, message, method)).start()
     else:
         query.answer()
@@ -138,14 +138,14 @@ def _search(key, site, message, method):
             resp = rget(api)
             search_results = resp.json()
             if "error" in search_results.keys():
-                return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i>", message)
-            msg = f"<b>Found {min(search_results['total'], TELEGRAPH_LIMIT)}</b>"
+                return editMessage(f"🚫 <b>No Result Found For {key} 🚫\n🌐Torrent Site :- {SITES.get(site)}</b>", message)
+            msg = f"<b>🔎 Found {min(search_results['total'], TELEGRAPH_LIMIT)}</b>"
             if method == 'apitrend':
-                msg += f" <b>trending result(s)\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
+                msg += f" <b>trending result(s)\n🌐 Torrent Site :- {SITES.get(site)}</b>"
             elif method == 'apirecent':
-                msg += f" <b>recent result(s)\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
+                msg += f" <b>recent result(s)\n🌐 Torrent Site :- {SITES.get(site)}</b>"
             else:
-                msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
+                msg += f" <b>Result(s) For {key}\n🌐 Torrent Site :- {SITES.get(site)}</b>"
             search_results = search_results['data']
         except Exception as e:
             return editMessage(str(e), message)
@@ -163,12 +163,12 @@ def _search(key, site, message, method):
         search_results = dict_search_results.results
         total_results = dict_search_results.total
         if total_results == 0:
-            return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i>", message)
-        msg = f"<b>Found {min(total_results, TELEGRAPH_LIMIT)}</b>"
-        msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>"
+            return editMessage(f"🚫 <b>No Result Found For {key} 🚫\n🌐 Torrent Site :- {site.capitalize()}</b>", message)
+        msg = f"<b>🔎 Found {min(total_results, TELEGRAPH_LIMIT)}</b>"
+        msg += f" <b>Result(s) For {key}\n🌐 Torrent Site :- {site.capitalize()}</b>"
     link = _getResult(search_results, key, message, method)
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("🔎 VIEW", link)
+    buttons.buildbutton("🔎 Check ↗️", link)
     button = InlineKeyboardMarkup(buttons.build_menu(1))
     editMessage(msg, message, button)
     if not method.startswith('api'):
