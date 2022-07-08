@@ -96,7 +96,7 @@ class DbManger:
         self.cur.execute(sql)
         self.conn.commit()
         self.disconnect()
-        return 'Authorized successfully'
+        return '✅ <b>Authorized Successfully</b> ✅'
 
     def user_unauth(self, chat_id: int):
         if self.err:
@@ -106,7 +106,7 @@ class DbManger:
             self.cur.execute(sql)
             self.conn.commit()
             self.disconnect()
-            return 'Unauthorized successfully'
+            return '🚫 <b>Unauthorized Successfully</b> 🚫'
 
     def user_addsudo(self, user_id: int):
         if self.err:
@@ -118,7 +118,7 @@ class DbManger:
         self.cur.execute(sql)
         self.conn.commit()
         self.disconnect()
-        return 'Successfully Promoted as Sudo'
+        return '✅ <b>Successfully Promoted as Sudo</b> ✅'
 
     def user_rmsudo(self, user_id: int):
         if self.err:
@@ -128,7 +128,7 @@ class DbManger:
             self.cur.execute(sql)
             self.conn.commit()
             self.disconnect()
-            return 'Successfully removed from Sudo'
+            return '🚫 <b>Successfully Removed From Sudo</b> 🚫'
 
     def user_media(self, user_id: int):
         if self.err:
@@ -185,7 +185,7 @@ class DbManger:
         self.cur.execute(sql)
         self.conn.commit()
         self.disconnect()
-        return 'Successfully added to leech logs'
+        return '✅ <b>Successfully Add to Leech Logs</b> ✅'
 
     def rmleech_log(self, chat_id: int):
         if self.err:
@@ -195,7 +195,7 @@ class DbManger:
             self.cur.execute(sql)
             self.conn.commit()
             self.disconnect()
-            return 'Removed from leech logs successfully'
+            return '🚫 <b>Successfully Removed From Leech Logs</b> 🚫'
 
     def user_check(self, uid: int):
         self.cur.execute("SELECT * FROM users WHERE uid = {}".format(uid))
