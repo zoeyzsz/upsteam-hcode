@@ -435,7 +435,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
                 link = file.get_file().file_path
 
     if not is_url(link) and not is_magnet(link) and not ospath.exists(link):
-        help_msg += "<b>🚫 No Download Source Provided 🚫\n_________________________</b>"
+        help_msg = "<b>🚫 No Download Source Provided 🚫\n_________________________</b>"
         help_msg += "\n\n<b>🚩How to Mirror ?</b>"
         help_msg += "\n<code>/command</code> {Link}"
         help_msg += "\n<b>Example :</b>"

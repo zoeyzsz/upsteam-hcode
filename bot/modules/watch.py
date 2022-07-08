@@ -70,7 +70,7 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
             tag = reply_to.from_user.mention_html(reply_to.from_user.first_name)
 
     if not is_url(link):
-        help_msg += "<b>🚫 No Download Source Provided 🚫\n_________________________</b>"
+        help_msg = "<b>🚫 No Download Source Provided 🚫\n_________________________</b>"
         help_msg += "\n\n🚩<b>How to Mirror With YTDL / YouTube ?</b>"
         help_msg += "\n<code>/command</code> {link}"
         help_msg += "\n<b>Example :</b>"
