@@ -1,6 +1,5 @@
 from bot import CMD_INDEX
 
-
 class _BotCommands:
     def __init__(self):
         self.StartCommand = f'start'
@@ -10,9 +9,9 @@ class _BotCommands:
         self.CancelMirror = f'cancel{CMD_INDEX}'
         self.CancelAllCommand = f'cancelall{CMD_INDEX}'
         self.ListCommand = f'find{CMD_INDEX}'
-        self.SearchCommand = f'torrent1{CMD_INDEX}'
+        self.SearchCommand = f'torrent{CMD_INDEX}'
         self.StatusCommand = f'status{CMD_INDEX}'
-        self.AuthorizedUsersCommand = f'users{CMD_INDEX}'
+        self.AuthorizedUsersCommand = f'allow'
         self.AuthorizeCommand = f'auth'
         self.UnAuthorizeCommand = f'unauth'
         self.AddSudoCommand = f'addsudo'
