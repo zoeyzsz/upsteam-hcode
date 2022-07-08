@@ -211,7 +211,7 @@ class MirrorListener:
             if typ != 0:
                 msg += f'\n<b>👾 Corrupted Files : {typ}</b>'
             msg += f'\n<b>⏳ Estimated : {get_readable_time(time() - self.message.date.timestamp())}</b>'
-            msg += f'\n\n<b>👨♂️ By : {self.tag} ✨</b>\n\n'
+            msg += f'\n\n<b>🙎🏻‍♂️ By : {self.tag} ✨</b>'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
