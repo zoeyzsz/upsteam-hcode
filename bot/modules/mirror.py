@@ -230,7 +230,7 @@ class MirrorListener:
                 msg += f'\n<b>🗂 Total Folders : {folders}</b>'
                 msg += f'\n<b>📄 Total Files : {files}</b>'
             msg += f'\n<b>⏳ Estimated : {get_readable_time(time() - self.message.date.timestamp())}</b>'
-            msg += f'\n\n<b>👨♂️ By : {self.tag} ✨</b>\n\n'
+            msg += f'\n\n<b>🙎🏻‍♂️ By : {self.tag} ✨</b>\n\n'
             buttons = ButtonMaker()
             link = short_url(link)
             buttons.buildbutton("⚡ Google Drive ⚡", link)

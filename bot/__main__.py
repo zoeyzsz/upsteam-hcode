@@ -106,94 +106,94 @@ def log(update, context):
 
 
 help_string_telegraph = f'''<br>
-<b>/{BotCommands.HelpCommand}</b>: To get this message
+<b>/{BotCommands.HelpCommand}</b>: Show Available Commands
 <br><br>
-<b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Start mirroring to Google Drive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
+<b>/{BotCommands.MirrorCommand}</b> : Start Mirroring
 <br><br>
-<b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder compressed with zip extension
+<b>/{BotCommands.ZipMirrorCommand}</b> : Start Mirroring and Upload as .Zip
 <br><br>
-<b>/{BotCommands.UnzipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.UnzipMirrorCommand}</b> : Start Mirroring and Upload as Archive or Extracted Folder/File
 <br><br>
-<b>/{BotCommands.QbMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start Mirroring using qBittorrent, Use <b>/{BotCommands.QbMirrorCommand} s</b> to select files before downloading and use <b>/{BotCommands.QbMirrorCommand} d</b> to seed specific torrent
+<b>/{BotCommands.QbMirrorCommand}</b> : Start Mirroring Using qBittorrent
 <br><br>
-<b>/{BotCommands.QbZipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start mirroring using qBittorrent and upload the file/folder compressed with zip extension
+<b>/{BotCommands.QbZipMirrorCommand}</b> : Start Mirroring Using qBittorrent and Upload as .Zip
 <br><br>
-<b>/{BotCommands.QbUnzipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start mirroring using qBittorrent and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.QbUnzipMirrorCommand}</b> : Start Mirroring Using qBittorrent and Upload as Archive or Extracted Folder/File
 <br><br>
-<b>/{BotCommands.LeechCommand}</b> [download_url][magnet_link]: Start leeching to Telegram, Use <b>/{BotCommands.LeechCommand} s</b> to select files before leeching
+<b>/{BotCommands.LeechCommand}</b> : Start Upload/Leech File to Telegram
 <br><br>
-<b>/{BotCommands.ZipLeechCommand}</b> [download_url][magnet_link]: Start leeching to Telegram and upload the file/folder compressed with zip extension
+<b>/{BotCommands.ZipLeechCommand}</b> : Start Upload/Leech File to Telegram and Upload as .Zip
 <br><br>
-<b>/{BotCommands.UnzipLeechCommand}</b> [download_url][magnet_link][torent_file]: Start leeching to Telegram and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.UnzipLeechCommand}</b> : Start Upload/Leech File to Telegram and Upload as Archive or Extracted Folder/File
 <br><br>
-<b>/{BotCommands.QbLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent, Use <b>/{BotCommands.QbLeechCommand} s</b> to select files before leeching
+<b>/{BotCommands.QbLeechCommand}</b> : Start Upload/Leech to Telegram Using qBittorrent
 <br><br>
-<b>/{BotCommands.QbZipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent and upload the file/folder compressed with zip extension
+<b>/{BotCommands.QbZipLeechCommand}</b> : Start Upload/Leech to Telegram Using qBittorrent and Upload as .Zip
 <br><br>
-<b>/{BotCommands.QbUnzipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent and upload the file/folder extracted from any archive extension
+<b>/{BotCommands.QbUnzipLeechCommand}</b> : Start Upload/Leech to Telegram Using qBittorrent and Upload as Archive or Extracted Folder/File
 <br><br>
-<b>/{BotCommands.CloneCommand}</b> [drive_url][gdtot_url]: Copy file/folder to Google Drive
+<b>/{BotCommands.CloneCommand}</b> : Copy File/Folder to Google Drive
 <br><br>
-<b>/{BotCommands.CountCommand}</b> [drive_url][gdtot_url]: Count file/folder of Google Drive
+<b>/{BotCommands.CountCommand}</b> : Count File/Folder of Google Drive
 <br><br>
-<b>/{BotCommands.DeleteCommand}</b> [drive_url]: Delete file/folder from Google Drive (Only Owner & Sudo)
+<b>/{BotCommands.DeleteCommand}</b> : Delete File/Folder From Google Drive
 <br><br>
-<b>/{BotCommands.WatchCommand}</b> [yt-dlp supported link]: Mirror yt-dlp supported link. Send <b>/{BotCommands.WatchCommand}</b> for more help
+<b>/{BotCommands.WatchCommand}</b> : Mirror YTDL Supported Link.
 <br><br>
-<b>/{BotCommands.ZipWatchCommand}</b> [yt-dlp supported link]: Mirror yt-dlp supported link as zip
+<b>/{BotCommands.ZipWatchCommand}</b> : Mirror YTDL Supported Link and Upload as .Zip
 <br><br>
-<b>/{BotCommands.LeechWatchCommand}</b> [yt-dlp supported link]: Leech yt-dlp supported link
+<b>/{BotCommands.LeechWatchCommand}</b> : Upload/Leech YTDL Supported Link to Telegram
 <br><br>
-<b>/{BotCommands.LeechZipWatchCommand}</b> [yt-dlp supported link]: Leech yt-dlp supported link as zip
+<b>/{BotCommands.LeechZipWatchCommand}</b> : Upload/Leech YTDL Supported Link to Telegram and Upload as .Zip
 <br><br>
-<b>/{BotCommands.LeechSetCommand}</b>: Leech settings
+<b>/{BotCommands.CancelMirror}</b>: Reply to the Message or Using /{BotCommands.CancelMirror} GID
 <br><br>
-<b>/{BotCommands.SetThumbCommand}</b>: Reply photo to set it as Thumbnail
+<b>/{BotCommands.CancelAllCommand}</b>: Force Cancel All Downloading
 <br><br>
-<b>/{BotCommands.RssListCommand}</b>: List all subscribed rss feed info
+<b>/{BotCommands.ListCommand}</b> : Search File/Folder in Google Drive
 <br><br>
-<b>/{BotCommands.RssGetCommand}</b>: [Title] [Number](last N links): Force fetch last N links
+<b>/{BotCommands.SearchCommand}</b> : Search for torrents with API
 <br><br>
-<b>/{BotCommands.RssSubCommand}</b>: [Title] [Rss Link] f: [filter]: Subscribe new rss feed
+<b>/{BotCommands.StatusCommand}</b> : Shows a Status of All The Downloads
 <br><br>
-<b>/{BotCommands.RssUnSubCommand}</b>: [Title]: Unubscribe rss feed by title
+<b>/{BotCommands.StatsCommand}</b> : Show Stats of the System
 <br><br>
-<b>/{BotCommands.RssSettingsCommand}</b>: Rss Settings
+<b>/{BotCommands.LeechSetCommand}</b>: Leech Settings
 <br><br>
-<b>/{BotCommands.CancelMirror}</b>: Reply to the message by which the download was initiated and that download will be cancelled
+<b>/{BotCommands.SetThumbCommand}</b>: Reply Photo to Set Thumbnail
 <br><br>
-<b>/{BotCommands.CancelAllCommand}</b>: Cancel all downloading tasks
+<b>/{BotCommands.RssListCommand}</b> : List All Subscribed RSS Feed
 <br><br>
-<b>/{BotCommands.ListCommand}</b> [query]: Search in Google Drive(s)
+<b>/{BotCommands.RssGetCommand}</b> : Force Fetch Last N Links
 <br><br>
-<b>/{BotCommands.SearchCommand}</b> [query]: Search for torrents with API
-<br>sites: <code>rarbg, 1337x, yts, etzv, tgx, torlock, piratebay, nyaasi, ettv</code><br><br>
-<b>/{BotCommands.StatusCommand}</b>: Shows a status of all the downloads
+<b>/{BotCommands.RssSubCommand}</b> : Subscribe New RSS Feed
 <br><br>
-<b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
+<b>/{BotCommands.RssUnSubCommand}</b> : Unubscribe RSS Feed by Title
+<br><br>
+<b>/{BotCommands.RssSettingsCommand}</b>: RSS Settings
 '''
 
 help = telegraph.create_page(
-        title='Z-Mirror-Bot Help',
+        title='Telegraph Search x Google Drive',
         content=help_string_telegraph,
     )["path"]
 
 help_string = f'''
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
+/{BotCommands.PingCommand}: Check Active
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.AuthorizeCommand}: Authorize A Chat or User to Use The Bot
 
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.UnAuthorizeCommand}: Unauthorize A Chat or User to Use The Bot
 
-/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
+/{BotCommands.AuthorizedUsersCommand}: Show Authorized Chat or Users
 
-/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
+/{BotCommands.AddSudoCommand}: Add Sudo Permission
 
-/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
+/{BotCommands.RmSudoCommand}: Remove Sudo Permission
 
-/{BotCommands.RestartCommand}: Restart and update the bot
+/{BotCommands.RestartCommand}: Restart System
 
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+/{BotCommands.LogCommand}: Get .Log For Getting Crash Reports
 '''
 
 def bot_help(update, context):
