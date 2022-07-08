@@ -200,23 +200,22 @@ class MirrorListener:
         buttons = ButtonMaker()
         if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
             DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>File Name: </b><code>{escape(name)}</code>\n<b>File Size: </b>{size}"
+        msg = f"<b>📂 File Name :</b> <code>{escape(name)}</code>\n<b>📥 Total Size : {size}</b>"
         if self.isLeech:
             if BOT_PM:
                 bot_d = bot.get_me()
                 b_uname = bot_d.username
                 botstart = f"http://t.me/{b_uname}"
-                buttons.buildbutton("View file in PM", f"{botstart}")
-            msg += f'\n<b>Total Files: </b>{folders}'
+                buttons.buildbutton("View File", f"{botstart}")
+            msg += f'\n<b>📄 Total Files : {folders}</b>'
             if typ != 0:
-                msg += f'\n<b>Corrupted Files: </b>{typ}'
-            msg += f'\n\n<b>Hey </b>{self.tag} <b>Your Job is Done</b>'
-            msg += f'\n<b>It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-            msg += f'\n\n<b>Thanks For using @Z_Mirror</b>'
+                msg += f'\n<b>👾 Corrupted Files : {typ}</b>'
+            msg += f'\n<b>⏳ Estimated : {get_readable_time(time() - self.message.date.timestamp())}</b>'
+            msg += f'\n\n<b>👨♂️ By : {self.tag} ✨</b>\n\n'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
-                fmsg = '\n<b>Your Files Are:</b>\n'
+                fmsg = '\n<b>📄 Your Files :</b>\n'
                 for index, (link, name) in enumerate(files.items(), start=1):
                     fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                     if len(fmsg.encode() + msg.encode()) > 4000:
@@ -226,16 +225,15 @@ class MirrorListener:
                 if fmsg != '':
                     sendMessage(msg + fmsg, self.bot, self.message)
         else:
-            msg += f'\n<b>Type: </b>{typ}'
+            msg += f'\n<b>🔖 Type Files : {typ}</b>'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
-            msg += f'\n\n<b>Hey </b>{self.tag} <b>Your Job is Done</b>'
-            msg += f'\n<b>It Tooks:</b> {get_readable_time(time() - self.message.date.timestamp())}'
-            msg += f'\n\n<b>Thanks For using @Z_Mirror</b>'
+                msg += f'\n<b>🗂 Total Folders : {folders}</b>'
+                msg += f'\n<b>📄 Total Files : {files}</b>'
+            msg += f'\n<b>⏳ Estimated : {get_readable_time(time() - self.message.date.timestamp())}</b>'
+            msg += f'\n\n<b>👨♂️ By : {self.tag} ✨</b>\n\n'
             buttons = ButtonMaker()
             link = short_url(link)
-            buttons.buildbutton("☁️ Drive Link", link)
+            buttons.buildbutton("⚡ Google Drive ⚡", link)
             LOGGER.info(f'Done Uploading {name}')
             if INDEX_URL is not None:
                 url_path = rutils.quote(f'{name}')
@@ -243,14 +241,14 @@ class MirrorListener:
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("💨 Drive IndeX 💨", share_url)
                 else:
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("💨 Drive IndeX 💨", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
                         share_urls = short_url(share_urls)
-                        buttons.buildbutton("🌐 View Link", share_urls)
+                        buttons.buildbutton("🌐 View Link 🌐", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
                 buttons.buildbutton(f"{BUTTON_FOUR_NAME}", f"{BUTTON_FOUR_URL}")
             if BUTTON_FIVE_NAME is not None and BUTTON_FIVE_URL is not None:
@@ -326,15 +324,15 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
             uname = message.from_user.mention_html(message.from_user.first_name)
             user = bot.get_chat_member(FSUB_CHANNEL_ID, message.from_user.id)
             if user.status not in ['member', 'creator', 'administrator']:
-                buttons.buildbutton("Z Mirrror", f"https://t.me/{CHANNEL_USERNAME}")
+                buttons.buildbutton("QXYZ Drive", f"https://t.me/{CHANNEL_USERNAME}")
                 reply_markup = InlineKeyboardMarkup(buttons.build_menu(1))
-                return sendMarkup(f"<b>Dear {uname}️,\nYou haven't joined our Updates Channel yet.\nJoin and <u>Use Bots Without Restrictions.</u></b>", bot, message, reply_markup)
+                return sendMarkup(f"<b>Dear {uname}️✨,\n🚫 You haven't joined our Channel yet. Please Join and Use My Bots Without Restrictions 🚫</b>", bot, message, reply_markup)
         except Exception as e:
             LOGGER.info(str(e))
 
     if BOT_PM and message.chat.type != 'private':
         try:
-            msg1 = f'Added your Requested link to Download\n'
+            msg1 = f'Added Your Requested Link to Download\n'
             send = bot.sendMessage(message.from_user.id, text=msg1)
             send.delete()
         except Exception as e:
@@ -343,19 +341,19 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
             b_uname = bot_d.username
             uname = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
             botstart = f"http://t.me/{b_uname}"
-            buttons.buildbutton("Click Here to Start Me", f"{botstart}")
-            startwarn = f"Dear {uname},\n\n<b>I found that you haven't started me in PM (Private Chat) yet.</b>\n\n" \
-                        f"From now on i will give link and leeched files in PM and log channel only"
+            buttons.buildbutton("Start Me", f"{botstart}")
+            startwarn = f"Dear {uname},\n\n<b>You haven't Started Me in Private Chat yet.</b>\n\n" \
+                        f"I Will Send You Leeched Files in Private Chat"
             message = sendMarkup(startwarn, bot, message, InlineKeyboardMarkup(buttons.build_menu(2)))
             return
-            
+
     mesg = message.text.split('\n')
     message_args = mesg[0].split(maxsplit=1)
     name_args = mesg[0].split('|', maxsplit=1)
     qbsel = False
     index = 1
     is_gdtot = False
-    
+
     if len(message_args) > 1:
         args = mesg[0].split(maxsplit=3)
         if "s" in [x.strip() for x in args]:
@@ -376,17 +374,17 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
             link = ''
     else:
         link = ''
-    
+
     if len(name_args) > 1:
         name = name_args[1]
         name = name.split(' pswd:')[0]
         name = name.strip()
     else:
         name = ''
-    
+
     link = re_split(r"pswd:|\|", link)[0]
     link = link.strip()
-    
+
     pswd_arg = mesg[0].split(' pswd: ')
     if len(pswd_arg) > 1:
         pswd = pswd_arg[1]
@@ -437,16 +435,36 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
                 link = file.get_file().file_path
 
     if not is_url(link) and not is_magnet(link) and not ospath.exists(link):
-        help_msg = "<b>Send link along with command line:</b>"
-        help_msg += "\n<code>/command</code> {link} |newname pswd: xx [zip/unzip]"
-        help_msg += "\n\n<b>By replying to link or file:</b>"
-        help_msg += "\n<code>/command</code> |newname pswd: xx [zip/unzip]"
-        help_msg += "\n\n<b>Direct link authorization:</b>"
-        help_msg += "\n<code>/command</code> {link} |newname pswd: xx\nusername\npassword"
-        help_msg += "\n\n<b>Qbittorrent selection and seed:</b>"
-        help_msg += "\n<code>/qbcommand</code> <b>s</b>(for selection) <b>d</b>(for seeding) {link} or by replying to {file/link}"
-        help_msg += "\n\n<b>Multi links only by replying to first link or file:</b>"
-        help_msg += "\n<code>/command</code> 10(number of links/files)"
+        help_msg += "<b>🚫 No Download Source Provided 🚫</b>"
+        help_msg += "\n<b>________________________________________</b>"
+        help_msg += "\n\n<b>🚩How to Mirror ?</b>"
+        help_msg += "\n<code>/command</code> <b>{Link}</b>"
+        help_msg += "\n<b>Example :</b>"
+        help_msg += "\n<code>/{BotCommands.MirrorCommand} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/open_gapps-arm64-11.0-pico-20220503.zip</code>"
+        help_msg += "\n\n<b>🚩How to Mirror With Custom Name?</b>"
+        help_msg += "\n<code>/command</code> <b>{Link} |{New Name}</b>"
+        help_msg += "\n<b>Note : Add "|" Before Link</b>"
+        help_msg += "\n<b>Example :</b>"
+        help_msg += "\n<code>/{BotCommands.MirrorCommand} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/open_gapps-arm64-11.0-pico-20220503.zip |X.zip</code>"
+        help_msg += "\n\n<b>🚩How to Mirror With Unzip Mirror / Extract With Password?</b>"
+        help_msg += "\n<code>/command</code> <b>{Link} |pswd: {Your Password}</b>"
+        help_msg += "\n<b>Example :</b>"
+        help_msg += "\n<code>/{BotCommands.UnzipMirrorCommand} https://drive.hilmay619.workers.dev/0:/1%20-%20Example/Wallpapers.zip |pswd: qwerty123</code>"
+        help_msg += "\n\n<b>🚩How to Mirror With qBitTorrent?</b>"
+        help_msg += "\n<b>Example :</b>"
+        help_msg += "\n<code>/{BotCommands.QbMirrorCommand} https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
+        help_msg += "\n\n<b>🚩How to Mirror With YTDL / YouTube ?</b>"
+        help_msg += "\n<code>/command</code> <b>{link}</b>"
+        help_msg += "\n<b>Example :</b>"
+        help_msg += "\n<code>/{BotCommands.WatchCommand} https://youtu.be/TiQ7aug-GwI</code>"
+        help_msg += "\n<b>Note : Choose Your Quality/Type of Files</b>"
+        help_msg += "\n\n<b>🚩How to Mirror Seeding & Selection File With qBitTorrent?</b>"
+        help_msg += "\n<b>Note : Add "s" / "d" After Command</b>"
+        help_msg += "\n<b>Example :</b>"
+        help_msg += "\n<b>- For Selection Files</b>"
+        help_msg += "\n<code>/{BotCommands.QbMirrorCommand} s https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
+        help_msg += "\n\n<b>- For Seeding Files</b>"
+        help_msg += "\n<code>/{BotCommands.QbMirrorCommand} d https://yts.mx/torrent/download/063A8D1602B018CEF86F34FF540D69D29F46CBBA</code>"
         return sendMessage(help_msg, bot, message)
 
     LOGGER.info(link)
@@ -468,9 +486,9 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"Use /{BotCommands.CloneCommand} to clone Google Drive file/folder\n\n"
-            gmsg += f"Use /{BotCommands.ZipMirrorCommand} to make zip of Google Drive folder\n\n"
-            gmsg += f"Use /{BotCommands.UnzipMirrorCommand} to extracts Google Drive archive file"
+            gmsg = f"<b>Use</b> /{BotCommands.CloneCommand} <b>To Clone Google Drive File/Folder</b>\n\n"
+            gmsg += f"<b>Use</b> /{BotCommands.ZipMirrorCommand} <b>To Make .zip of Google Drive Folder</b>\n\n"
+            gmsg += f"<b>Use</b> /{BotCommands.UnzipMirrorCommand} <b>To Extracts Google Drive Archive File</b>"
             sendMessage(gmsg, bot, message)
         else:
             Thread(target=add_gd_download, args=(link, listener, is_gdtot)).start()
@@ -478,7 +496,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
         if MEGA_KEY is not None:
             Thread(target=MegaDownloader(listener).add_download, args=(link, f'{DOWNLOAD_DIR}{listener.uid}/')).start()
         else:
-            sendMessage('MEGA_API_KEY not Provided!', bot, message)
+            sendMessage('🚫 MEGA_API_KEY Not Provided 🚫', bot, message)
     elif isQbit:
         Thread(target=QbDownloader(listener).add_qb_torrent, args=(link, f'{DOWNLOAD_DIR}{listener.uid}', qbsel)).start()
     else:

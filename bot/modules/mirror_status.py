@@ -14,9 +14,9 @@ def mirror_status(update, context):
     if count == 0:
             currentTime = get_readable_time(time() - botStartTime)
             free = get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)
-            message = 'Nothing To Do !\n_______________'
-            message += f"\n\n<b>CPU        :</b> {cpu_percent()}%\n<b>SSD        :</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}" \
-                       f"\n<b>RAM       :</b> {virtual_memory().percent}%\n<b>UPTM     :</b> {get_readable_time(time() - botStartTime)}"
+            message = '🚫 <b>No Tasks Available</b> 🚫\n_________________________'
+            message += f"\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>" \
+                       f"\n<b>⚙️ RAM           : {virtual_memory().percent}%</b>\n<b>⏰ UPTIME     : {get_readable_time(time() - botStartTime)}</b>"
             reply_message = sendMessage(message, context.bot, update.message)
             Thread(target=auto_delete_message, args=(context.bot, update.message, reply_message)).start()
     else:
@@ -40,7 +40,7 @@ def status_pages(update, context):
     query = update.callback_query
     with status_reply_dict_lock:
         if not status_reply_dict or not Interval or time() - list(status_reply_dict.values())[0][1] < 2:
-            query.answer(text="Wait One More Second!", show_alert=True)
+            query.answer(text="🪅 Wait 1 Seconds 🪅", show_alert=True)
             return
     data = query.data
     data = data.split()

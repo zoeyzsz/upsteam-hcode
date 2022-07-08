@@ -56,7 +56,7 @@ def rss_sub(update, context):
         title = args[1].strip()
         feed_link = args[2].strip()
         f_lists = []
-        
+
         if len(args) == 4:
             filters = args[3].lstrip().lower()
             if filters.startswith('f: '):

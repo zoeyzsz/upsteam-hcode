@@ -61,21 +61,21 @@ class TelegraphHelper:
         num_of_path = len(path)
         for content in telegraph_content :
             if nxt_page == 1 :
-                content += f'<b><a href="https://telegra.ph/{path[nxt_page]}">Next</a></b>'
+                content += f'<b><a href="https://telegra.ph/{path[nxt_page]}">↪️ Next ↪️</a></b>'
                 nxt_page += 1
             else :
                 if prev_page <= num_of_path:
-                    content += f'<b><a href="https://telegra.ph/{path[prev_page]}">Prev</a></b>'
+                    content += f'<b><a href="https://telegra.ph/{path[prev_page]}">↩️ Previous ↩️</a></b>'
                     prev_page += 1
                 if nxt_page < num_of_path:
-                    content += f'<b> | <a href="https://telegra.ph/{path[nxt_page]}">Next</a></b>'
+                    content += f'<b> | <a href="https://telegra.ph/{path[nxt_page]}">↪️ Next ↪️</a></b>'
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = 'Z-Mirror-Bot Torrent Search',
+                title = 'Telegraph Search x Google Drive',
                 content=content
             )
         return
 
 
-telegraph=TelegraphHelper('Z-Mirror-Bot', 'https://github.com/shuvam-dawn/MLTB-Custom-UI')
+telegraph=TelegraphHelper('Telegraph', 'https://telegra.ph')

@@ -14,7 +14,7 @@ def cancel_mirror(update, context):
         gid = context.args[0]
         dl = getDownloadByGid(gid)
         if not dl:
-            return sendMessage(f"GID: <code>{gid}</code> Not Found.", context.bot, update.message)
+            return sendMessage(f"🚫 <b>GID :</b> <code>{gid}</code> <b>Not Found</b> 🚫", context.bot, update.message)
     elif update.message.reply_to_message:
         mirror_message = update.message.reply_to_message
         with download_dict_lock:
@@ -24,13 +24,13 @@ def cancel_mirror(update, context):
             else:
                 dl = None
         if not dl:
-            return sendMessage("This is not an active task!", context.bot, update.message)
+            return sendMessage("🚫 <b>This is Not an Active Task</b> 🚫", context.bot, update.message)
     elif len(context.args) == 0:
-        msg = f"Reply to an active <code>/{BotCommands.MirrorCommand}</code> message which was used to start the download or send <code>/{BotCommands.CancelMirror} GID</code> to cancel it!"
+        msg = f"🚫 <b>Reply</b> <code>/{BotCommands.CancelMirror}</code> <b>GID Code to Cancel Mirror</b> 🚫"
         return sendMessage(msg, context.bot, update.message)
 
     if OWNER_ID != user_id and dl.message.from_user.id != user_id and user_id not in SUDO_USERS:
-        return sendMessage("This is not your Task, STFU !", context.bot, update.message)
+        return sendMessage("🚫 <b>You Can't Stop This, Because it's Not Your Task</b> 🚫", context.bot, update.message)
 
     if dl.status() == MirrorStatus.STATUS_ARCHIVING:
         sendMessage("Archival in Progress, You Can't Cancel It.", context.bot, update.message)
@@ -55,13 +55,13 @@ def cancel_all(status):
 
 def cancell_all_buttons(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.sbutton("Downloading", "canall down")
-    buttons.sbutton("Uploading", "canall up")
-    buttons.sbutton("Seeding", "canall seed")
-    buttons.sbutton("Cloning", "canall clone")
-    buttons.sbutton("All", "canall all")
+    buttons.sbutton("📥 Downloading 📥", "canall down")
+    buttons.sbutton("📤 Uploading 📤", "canall up")
+    buttons.sbutton("☁️ Seeding ☁️", "canall seed")
+    buttons.sbutton("♻️ Cloning ♻️", "canall clone")
+    buttons.sbutton("⛔️ All ⛔️", "canall all")
     button = InlineKeyboardMarkup(buttons.build_menu(2))
-    sendMarkup('Choose tasks to cancel.', context.bot, update.message, button)
+    sendMarkup('<b>🚫 Force Stop The Task. Choose ⤵️</b>', context.bot, update.message, button)
 
 def cancel_all_update(update, context):
     query = update.callback_query
@@ -73,7 +73,7 @@ def cancel_all_update(update, context):
         query.message.delete()
         cancel_all(data[1])
     else:
-        query.answer(text="This is not yours, STFU !", show_alert=True)
+        query.answer(text="🚫 You Can't Stop This, Because it's Not Your Task 🚫", show_alert=True)
 
 
 

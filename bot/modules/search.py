@@ -27,13 +27,13 @@ if SEARCH_PLUGINS is not None:
 SITES = {
     "1337x": "1337x",
     "yts": "YTS",
-    "tgx": "TorrentGalaxy",
+    "tgx": "Torrent Galaxy",
     "torlock": "Torlock",
     "piratebay": "PirateBay",
     "nyaasi": "NyaaSi",
     "zooqle": "Zooqle",
     "kickass": "KickAss",
-    "bitsearch": "Bitsearch",
+    "bitsearch": "BitSearch",
     "glodls": "Glodls",
     "magnetdl": "MagnetDL",
     "limetorrent": "LimeTorrent",
@@ -53,7 +53,7 @@ def torser(update, context):
     if SEARCH_API_LINK is  None and SEARCH_PLUGINS is None:
         sendMessage("No API link or search PLUGINS added for this function", context.bot, update.message)
     elif len(context.args) == 0 and SEARCH_API_LINK is None:
-        sendMessage("Send a search key along with command", context.bot, update.message)
+        sendMessage("🚫 <b>Send Me a Keyword to Search Torrents</b> 🚫", context.bot, update.message)
     elif len(context.args) == 0:
         buttons.sbutton('Trending', f"torser {user_id} apitrend")
         buttons.sbutton('Recent', f"torser {user_id} apirecent")

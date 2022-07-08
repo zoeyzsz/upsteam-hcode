@@ -19,7 +19,7 @@ def _clone(message, bot, multi=0):
     buttons = ButtonMaker()
     if BOT_PM:
         try:
-            msg1 = f'Added your Requested link to Download\n'
+            msg1 = f'✅ <b>Added Your Requested Link to Download</b> ✅\n'
             send = bot.sendMessage(message.from_user.id, text=msg1)
             send.delete()
         except Exception as e:
@@ -97,7 +97,7 @@ def _clone(message, bot, multi=0):
             sleep(4)
             Thread(target=_clone, args=(nextmsg, bot, multi)).start()
         if files <= 20:
-            msg = sendMessage(f"Cloning: <code>{link}</code>", bot, message)
+            msg = sendMessage(f"📄 <b>Cloning, Please Wait. . .🔃</b>\n<b>🔗 Your Link :</b> <code>{link}</code>", bot, message)
             result, button = gd.clone(link)
             deleteMessage(bot, msg)
         else:
@@ -120,7 +120,7 @@ def _clone(message, bot, multi=0):
                     update_all_messages()
             except IndexError:
                 pass
-        cc = f'\n\n<b>Hey </b>{tag}<b> Your Task is Done</b>\n\n<b>Thanks for using <i>@Z_Mirror</i></b>'
+        cc = f'\n\n<b>🙎🏻‍♂️ By : {tag}</b>'
         if button in ["cancelled", ""]:
             sendMessage(f"{tag} {result}", bot, message)
         else:
@@ -133,7 +133,7 @@ def _clone(message, bot, multi=0):
                 LOGGER.info(f"Deleting: {link}")
                 gd.deletefile(link)
     else:
-        sendMessage('Send Gdrive or GDToT/AppDrive link along with command or by replying to the link by command', bot, message)
+        sendMessage('🚫 <b>Send Me GDTOT or Google Drive Shareable Link </b> 🚫', bot, message)
 
 @new_thread
 def cloneNode(update, context):
