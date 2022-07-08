@@ -215,7 +215,7 @@ class MirrorListener:
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
-                fmsg = '\n\n<b>📄 Link of Your Files ⤵️</b>\n'
+                fmsg = '\n\n<b>📄 Link of Your Files ⤵️</b>\n\n'
                 for index, (link, name) in enumerate(files.items(), start=1):
                     fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                     if len(fmsg.encode() + msg.encode()) > 4000:
@@ -326,7 +326,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
             if user.status not in ['member', 'creator', 'administrator']:
                 buttons.buildbutton("QXYZ Drive", f"https://t.me/{CHANNEL_USERNAME}")
                 reply_markup = InlineKeyboardMarkup(buttons.build_menu(1))
-                return sendMarkup(f"<b>Dear {uname}️✨,\n🚫 You haven't joined our Channel yet. Please Join and Use My Bots Without Restrictions 🚫</b>", bot, message, reply_markup)
+                return sendMarkup(f"<b>Dear {uname}️✨,\n🚫 You Haven't Joined Our Channel. Please Join and Use My Bots Without Restrictions 🚫</b>", bot, message, reply_markup)
         except Exception as e:
             LOGGER.info(str(e))
 
