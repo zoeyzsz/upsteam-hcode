@@ -162,9 +162,9 @@ def get_readable_message():
                 else:
                     msg += f"\n🔻 <b>Downloaded : {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
                 msg += f"\n<b>⚡️ Speed : {download.speed()}</b>" \
-                           f"\n<b>⏳ Estimated : {download.eta()}</b>"
-                msg += f"\n<b>⏳ Time Elapsed : {get_readable_time(time() - download.message.date.timestamp())}</b>"
-                msg += f'\n<b>👨‍⚖️ By : <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a></b> ✨'
+                           f"\n<b>⌛️ Estimated : {download.eta()}</b>"
+                msg += f"\n<b>⏳ Elapsed : {get_readable_time(time() - download.message.date.timestamp())}</b>"
+                msg += f'\n<b>👨‍⚖️ Users : <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a></b> ✨'
                 msg += f"\n<b>🐍 Python : {download.eng()}</b>"
                 try:
                     msg += f"\n<b>🔍 Tracker :- 🧲 Seeds : {download.aria_download().num_seeders}</b>" \
@@ -193,7 +193,7 @@ def get_readable_message():
                 msg += "\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
+        bmsg = f"\n\n<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
         bmsg += f"\n<b>⚙️ RAM           : {virtual_memory().percent}%</b>\n<b>⏰ UPTIME     : {get_readable_time(time() - botStartTime)}</b>"
         dlspeed_bytes = 0
         upspeed_bytes = 0
@@ -358,11 +358,10 @@ def bot_sys_stats():
     stats += f"""
 
 ⏰ Uptime : {currentTime}
-📥 Download : {recv} | 📤 Upload : {sent}
+📥 D : {recv} | 📤 U : {sent}
 🖥 CPU : {cpu}%
 ⚙️ RAM : {mem}%
-🗃 DISK : {total}
-📈 Used: {disk}% | 📉 Available : {free}
+🗃 DISK : {total} | 📉 Free : {free}
 
 """
     return stats
