@@ -45,11 +45,10 @@ def stats(update, context):
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
     stats = f'<b>📊 Time Calculation 📊</b>\n\n'\
-			f'<b>📅 Date : {last_commit}</b>\n'\
             f'<b>⏰ Uptime : {currentTime}</b>\n'\
-            f'<b>🖥 System Uptime : {osUptime}</b>\n\n'\
+            f'<b>🖥 OS Uptime : {osUptime}</b>\n\n'\
 			f'<b>📊 Data Usage 📊</b>\n\n'\
-            f'<b>💨 Storage : {total}</b>\n'\
+            f'<b>💨 Hard Disk : {total}</b>\n'\
             f'<b>📈 Used : {used}</b>\n<b>📉 Free : {free}</b>\n'\
             f'<b>📤 Upload : {sent}</b>\n<b>📥 Download : {recv}</b>\n\n'\
 			f'<b>📊 Performance Meter 📊</b>\n\n'\

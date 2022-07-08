@@ -86,16 +86,16 @@ class AriaDownloadStatus:
         self.__update()
         download = self.__download
         if download.is_waiting:
-            self.__listener.onDownloadError("Cancelled by user")
+            self.__listener.onDownloadError("Cancelled by User Himself")
             aria2.remove([download], force=True, files=True)
             return
         if len(download.followed_by_ids) != 0:
             downloads = aria2.get_downloads(download.followed_by_ids)
-            self.__listener.onDownloadError('Download stopped by user!')
+            self.__listener.onDownloadError('Download Stopped by User Himself')
             aria2.remove(downloads, force=True, files=True)
             aria2.remove([download], force=True, files=True)
             return
-        self.__listener.onDownloadError('Download stopped by user!')
+        self.__listener.onDownloadError('Download Stopped by User Himself')
         aria2.remove([download], force=True, files=True)
 
     def eng(self):

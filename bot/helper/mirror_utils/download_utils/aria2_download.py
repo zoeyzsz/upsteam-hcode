@@ -34,7 +34,7 @@ def __onDownloadStarted(api, gid):
                 if sname is not None:
                     smsg, button = GoogleDriveHelper().drive_list(sname, True)
                     if smsg:
-                        dl.getListener().onDownloadError('Someone already mirrored it for you !\n\n')
+                        dl.getListener().onDownloadError('Already Mirrored!\n\n')
                         api.remove([download], force=True, files=True)
                         return sendMarkup("Here you go:", dl.getListener().bot, dl.getListener().message, button)
             if any([ZIP_UNZIP_LIMIT, TORRENT_DIRECT_LIMIT, STORAGE_THRESHOLD]):
@@ -80,7 +80,7 @@ def __onDownloadStopped(api, gid):
     sleep(6)
     dl = getDownloadByGid(gid)
     if dl:
-        dl.getListener().onDownloadError('Dead torrent!')
+        dl.getListener().onDownloadError('Dead Torrent')
 
 @new_thread
 def __onDownloadError(api, gid):

@@ -75,7 +75,7 @@ class MegaDownloader:
             self.__onDownloadComplete()
             return
         if dlInfo['state'] == constants.State.TYPE_STATE_CANCELED:
-            self.__onDownloadError('Download stopped by user!')
+            self.__onDownloadError('Download Stopped by User Himself')
             return
         if dlInfo['state'] == constants.State.TYPE_STATE_FAILED:
             self.__onDownloadError(dlInfo['error_string'])

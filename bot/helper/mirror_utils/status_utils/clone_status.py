@@ -56,4 +56,3 @@ class CloneStatus:
 
     def eng(self):
         return EngineStatus.STATUS_GD
-
