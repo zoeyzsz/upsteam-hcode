@@ -195,7 +195,7 @@ def get_readable_message():
                 msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"\n\n<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
+        bmsg = f"<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
         bmsg += f"\n<b>⚙️ RAM           : {virtual_memory().percent}%</b>\n<b>⏰ UPTIME     : {get_readable_time(time() - botStartTime)}</b>"
         dlspeed_bytes = 0
         upspeed_bytes = 0
