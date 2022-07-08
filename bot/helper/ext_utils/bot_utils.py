@@ -165,6 +165,7 @@ def get_readable_message():
                            f"\n<b>⌛️ Estimated : {download.eta()}</b>"
                 msg += f"\n<b>⏳ Elapsed : {get_readable_time(time() - download.message.date.timestamp())}</b>"
                 msg += f'\n<b>👨‍⚖️ Users : <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a></b> ✨'
+                msg += f"\n<b>🐍 Python : {download.eng()}</b>"
                 try:
                     msg += f"\n<b>🔍 Tracker :- 🧲 Seeds : {download.aria_download().num_seeders}</b>" \
                             f" | <b>🧲 Peers : {download.aria_download().connections}</b>"
@@ -180,6 +181,7 @@ def get_readable_message():
 
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>🗃️ Size : {download.size()}</b>"
+                msg += f"\n<b>🐍 Python : qBittorrent V.4.4.2</b>"
                 msg += f"\n<b>⚡️ Speed : {get_readable_file_size(download.torrent_info().upspeed)}/s</b>"
                 msg += f" | <b>🔺 Uploaded: {get_readable_file_size(download.torrent_info().uploaded)}</b>"
                 msg += f"\n<b>🌧 Ratio : {round(download.torrent_info().ratio, 3)}</b>"
@@ -187,7 +189,8 @@ def get_readable_message():
                 msg += f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             else:
                 msg += f"\n<b>🗃️ Size : {download.size()}</b>"
-                msg += "\n\n"
+                msg += f"\n<b>🐍 Python : {download.eng()}</b>"
+                msg += f"\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
         bmsg = f"\n\n<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
