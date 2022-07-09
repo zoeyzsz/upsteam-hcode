@@ -145,9 +145,9 @@ def get_readable_message():
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
-            msg += f"<b>📄 File Name :</b> <code>{escape(str(download.name()))}</code>"
-            msg += f"\n<b>🗃️ Total Size : {download.size()}</b>"
-            msg += f"\n<b>🌀 Status : {download.status()}</b>"
+            msg += f"<b>📄 Name :-</b> <code>{escape(str(download.name()))}</code>"
+            msg += f"\n<b>🗃️ Total Size :- {download.size()}</b>"
+            msg += f"\n<b>🌀 Status :- {download.status()}</b>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -156,47 +156,47 @@ def get_readable_message():
             ]:
                 msg += f"\n🚀 <b>{get_progress_bar_string(download)} {download.progress()}</b> 💨"
                 if download.status() == MirrorStatus.STATUS_CLONING:
-                    msg += f"\n♻️ <b>Cloned : {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
+                    msg += f"\n♻️ <b>Cloned :- {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n🔺 <b>Uploaded : {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
+                    msg += f"\n🔺 <b>Uploaded :- {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
                 else:
-                    msg += f"\n🔻 <b>Downloaded : {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
-                msg += f"\n<b>⚡️ Speed : {download.speed()}</b>" \
-                           f"\n<b>⌛️ Estimated : {download.eta()}</b>"
-                msg += f"\n<b>⏳ Elapsed : {get_readable_time(time() - download.message.date.timestamp())}</b>"
-                msg += f'\n<b>👨‍⚖️ Users : <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a></b> ✨'
-                msg += f"\n<b>🐍 Python : {download.eng()}</b>"
+                    msg += f"\n🔻 <b>Downloaded :- {get_readable_file_size(download.processed_bytes())} of {download.size()}</b>"
+                msg += f"\n<b>⚡️ Speed :- {download.speed()}</b>" \
+                           f"\n<b>⌛️ Estimated :- {download.eta()}</b>"
+                msg += f"\n<b>⏳ Elapsed :- {get_readable_time(time() - download.message.date.timestamp())}</b>"
+                msg += f'\n<b>👨‍⚖️ Users :- <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a></b> ✨'
+                msg += f"\n<b>🐍 Python :- {download.eng()}</b>"
                 try:
-                    msg += f"\n<b>🔍 Tracker :- 🧲 Seeds : {download.aria_download().num_seeders}</b>" \
-                            f" | <b>🧲 Peers : {download.aria_download().connections}</b>"
+                    msg += f"\n<b>🔍 Tracker :- 🧲 Seeds :- {download.aria_download().num_seeders}</b>" \
+                            f" | <b>🧲 Peers :- {download.aria_download().connections}</b>"
                 except:
                     pass
                 try:
                     msg += f"\n<b>🔍 Tracker :- 🧲 Seeds : {download.torrent_info().num_seeds}</b>" \
-                            f" | <b>🧲 Leechs : {download.torrent_info().num_leechs}</b>"
+                            f" | <b>🧲 Leechs :- {download.torrent_info().num_leechs}</b>"
                 except:
                     pass
-                msg += f"\n<b>🔰 GID : {download.gid()}</b>" \
-                       f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>" \
+                msg += f"\n<b>🔰 GID :- {download.gid()}</b>" \
+                       f"\n<b>🚫 Cancel :-</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>" \
                        f"\n\n"
 
             elif download.status() == MirrorStatus.STATUS_SEEDING:
-                msg += f"\n<b>🗃️ Size : {download.size()}</b>"
-                msg += f"\n<b>🐍 Python : qBittorrent V.4.4.2</b>"
-                msg += f"\n<b>⚡️ Speed : {get_readable_file_size(download.torrent_info().upspeed)}/s</b>"
-                msg += f" | <b>🔺 Uploaded: {get_readable_file_size(download.torrent_info().uploaded)}</b>"
-                msg += f"\n<b>🌧 Ratio : {round(download.torrent_info().ratio, 3)}</b>"
-                msg += f" | <b>⏰ Time : {get_readable_time(download.torrent_info().seeding_time)}</b>"
-                msg += f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>🗃️ Size :- {download.size()}</b>"
+                msg += f"\n<b>🐍 Python :- qBittorrent V.4.4.2</b>"
+                msg += f"\n<b>⚡️ Speed :- {get_readable_file_size(download.torrent_info().upspeed)}/s</b>"
+                msg += f" | <b>🔺 Uploaded:- {get_readable_file_size(download.torrent_info().uploaded)}</b>"
+                msg += f"\n<b>🌧 Ratio :- {round(download.torrent_info().ratio, 3)}</b>"
+                msg += f" | <b>⏰ Time :- {get_readable_time(download.torrent_info().seeding_time)}</b>"
+                msg += f"\n<b>🚫 Cancel :-</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += f"\n\n"
             else:
-                msg += f"\n<b>🗃️ Size : {download.size()}</b>"
-                msg += f"\n<b>🐍 Python : {download.eng()}</b>"
+                msg += f"\n<b>🗃️ Size :- {download.size()}</b>"
+                msg += f"\n<b>🐍 Python :- {download.eng()}</b>"
                 msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            : {cpu_percent()}%</b>\n<b>🗃 DISK           : {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
-        bmsg += f"\n<b>⚙️ RAM           : {virtual_memory().percent}%</b>\n<b>⏰ UPTIME     : {get_readable_time(time() - botStartTime)}</b>"
+        bmsg = f"<b>📊 Performance Meter 📊</b>\n\n<b>🖥 CPU            :- {cpu_percent()}%</b>\n<b>🗃 DISK           :- {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}</b>"
+        bmsg += f"\n<b>⚙️ RAM           :- {virtual_memory().percent}%</b>\n<b>⏰ UPTIME     :- {get_readable_time(time() - botStartTime)}</b>"
         dlspeed_bytes = 0
         upspeed_bytes = 0
         for download in list(download_dict.values()):
@@ -211,14 +211,14 @@ def get_readable_message():
                     upspeed_bytes += float(spd.split('K')[0]) * 1024
                 elif 'MB/s' in spd:
                     upspeed_bytes += float(spd.split('M')[0]) * 1048576
-        bmsg += f"\n\n<b>⚡️ Internet Speed Meter ⚡️</b>\n\n<b>🔻 D : {get_readable_file_size(dlspeed_bytes)}/s</b> | <b>🔺 U : {get_readable_file_size(upspeed_bytes)}/s</b>"
+        bmsg += f"\n\n<b>⚡️ Internet Speed Meter ⚡️</b>\n\n<b>🔻 D :- {get_readable_file_size(dlspeed_bytes)}/s</b> | <b>🔺 U :- {get_readable_file_size(upspeed_bytes)}/s</b>"
 
         buttons = ButtonMaker()
         buttons.sbutton("📊 Statistics 📊", str(THREE))
         sbutton = InlineKeyboardMarkup(buttons.build_menu(1))
 
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
-            msg += f"<b>📌 Page : {PAGE_NO}/{pages}</b> | <b>🔖 Tasks : {tasks}</b>\n\n"
+            msg += f"<b>📌 Page :- {PAGE_NO}/{pages}</b> | <b>🔖 Tasks :- {tasks}</b>\n\n"
             buttons = ButtonMaker()
             buttons.sbutton("↩️ Previous ↩️", "status pre")
             buttons.sbutton(f"{PAGE_NO}/{pages}", str(THREE))
@@ -359,12 +359,13 @@ def bot_sys_stats():
     stats = f""
     stats += f"""
 
-⏰ Uptime   : {currentTime}
-📥 Download : {recv}
-📤 Upload   : {sent}
-🖥 CPU       : {cpu}%
-⚙️ RAM      : {mem}%
-🗃 DISK      : {total} | 📉 Free : {free}
+⏰ Uptime :- {currentTime}
+📥 Download :- {recv}
+📤 Upload :- {sent}
+🖥 CPU :- {cpu}%
+⚙️ RAM :- {mem}%
+🗃 DISK :- {total}
+📉 Disk Free :- {free}
 
 """
     return stats

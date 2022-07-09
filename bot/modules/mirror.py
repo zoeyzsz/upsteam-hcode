@@ -200,18 +200,19 @@ class MirrorListener:
         buttons = ButtonMaker()
         if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
             DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>📂 File Name :</b> <code>{escape(name)}</code>\n<b>📥 Total Size : {size}</b>"
+        msg = f"<b>📂 Name :-</b> <code>{escape(name)}</code>\n<b>📥 Total Size :- {size}</b>"
         if self.isLeech:
             if BOT_PM:
                 bot_d = bot.get_me()
                 b_uname = bot_d.username
                 botstart = f"http://t.me/{b_uname}"
                 buttons.buildbutton("View File", f"{botstart}")
-            msg += f'\n<b>📄 Total Files : {folders}</b>'
+            msg += f'\n<b>📄 Total Files :- {folders}</b>'
             if typ != 0:
-                msg += f'\n<b>👾 Corrupted Files : {typ}</b>'
-            msg += f'\n<b>⏳ Estimated : {get_readable_time(time() - self.message.date.timestamp())}</b>'
-            msg += f'\n\n<b>🙎🏻‍♂️ By : {self.tag} ✨</b>'
+                msg += f'\n<b>👾 Corrupted Files :- {typ}</b>'
+            msg += f'\n<b>⏳ Estimated :- {get_readable_time(time() - self.message.date.timestamp())}</b>'
+            msg += f'\n<b>✅ Status :- Successfully Uploaded</b>'
+            msg += f'\n\n<b>🙎🏻‍♂️ By :- {self.tag} ✨</b>'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -225,12 +226,13 @@ class MirrorListener:
                 if fmsg != '':
                     sendMessage(msg + fmsg, self.bot, self.message)
         else:
-            msg += f'\n<b>🔖 Type Files : {typ}</b>'
+            msg += f'\n<b>🏷 Type Files :- {typ}</b>'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>🗂 Total Folders : {folders}</b>'
-                msg += f'\n<b>📄 Total Files : {files}</b>'
-            msg += f'\n<b>⏳ Estimated : {get_readable_time(time() - self.message.date.timestamp())}</b>'
-            msg += f'\n\n<b>🙎🏻‍♂️ By : {self.tag} ✨</b>\n\n'
+                msg += f'\n<b>🗂 Total Folders :- {folders}</b>'
+                msg += f'\n<b>📄 Total Files :- {files}</b>'
+            msg += f'\n<b>⏳ Estimated :- {get_readable_time(time() - self.message.date.timestamp())}</b>'
+            msg += f'\n<b>✅ Status :- Successfully Uploaded</b>'
+            msg += f'\n\n<b>🙎🏻‍♂️ By :- {self.tag} ✨</b>\n\n'
             buttons = ButtonMaker()
             link = short_url(link)
             buttons.buildbutton("⚡ Google Drive ⚡", link)
