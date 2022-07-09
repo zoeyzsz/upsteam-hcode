@@ -199,7 +199,7 @@ def bot_help(update, context):
     button = ButtonMaker()
     button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
-    sendMarkup(help_string, context.bot, update.message, reply_markup)
+    update.effective_message.reply_photo(IMAGE_URL, help_string, context.bot, update.message, parse_mode = 'Markdown', reply_markup=reply_markup)
 
 def main():
     start_cleanup()
