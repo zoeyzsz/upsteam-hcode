@@ -184,7 +184,7 @@ def get_readable_message():
                 msg += f"\n<b>🗃️ Size : {download.size()}</b>"
                 msg += f"\n<b>🐍 Python : qBittorrent V.4.4.2</b>"
                 msg += f"\n<b>⚡️ Speed : {get_readable_file_size(download.torrent_info().upspeed)}/s</b>"
-                msg += f" | <b>🔺 Uploaded: {get_readable_file_size(download.torrent_info().uploaded)}</b>"
+                msg += f" | <b>🔺 Uploaded : {get_readable_file_size(download.torrent_info().uploaded)}</b>"
                 msg += f"\n<b>🌧 Ratio : {round(download.torrent_info().ratio, 3)}</b>"
                 msg += f" | <b>⏰ Time : {get_readable_time(download.torrent_info().seeding_time)}</b>"
                 msg += f"\n<b>🚫 Cancel :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
@@ -334,6 +334,16 @@ def bot_sys_stats():
     mem = psutil.virtual_memory().percent
     disk = psutil.disk_usage(DOWNLOAD_DIR).percent
     total, used, free = shutil.disk_usage(DOWNLOAD_DIR)
+    swap = swap_memory()
+    swap_p = swap.percent
+    swap_t = get_readable_file_size(swap.total)
+    memory = virtual_memory()
+    mem_p = memory.percent
+    mem_t = get_readable_file_size(memory.total)
+    mem_a = get_readable_file_size(memory.available)
+    mem_u = get_readable_file_size(memory.used)
+    p_core = cpu_count(logical=False)
+    t_core = cpu_count(logical=True)
     total = get_readable_file_size(total)
     used = get_readable_file_size(used)
     free = get_readable_file_size(free)
@@ -358,12 +368,23 @@ def bot_sys_stats():
                 num_split += 1
     stats = f""
     stats += f"""
+📊 Statistics of Data Usage 📊
 
-⏰ Uptime : {currentTime}
-📥 D : {recv} | 📤 U : {sent}
-🖥 CPU : {cpu}%
-⚙️ RAM : {mem}%
-🗃 DISK : {total} | 📉 Free : {free}
+📥 Download : {recv}
+📤 Upload : {sent}
+______________________________
+🖥 CPU : {cpu}% of 100%
+🎛 CPU Core : {t_core}
+🪅 Physical Core : {p_core}
+______________________________
+⚙️ Memory : {mem}%
+📉 Memory Free : {mem_a}
+📈 Memory Used : {mem_u}
+🛡 Swap : {swap_t} | 📈 Used : {swap_p}
+______________________________
+🗃 Storage : {total}
+📈 Used : {used}
+📉 Free : {free}
 
 """
     return stats

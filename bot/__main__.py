@@ -7,7 +7,7 @@ from sys import executable
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler
 
-from bot import bot, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, LOGGER, Interval, INCOMPLETE_TASK_NOTIFIER, DB_URI, alive, app, main_loop
+from bot import bot, dispatcher, updater, IMAGE_URL, botStartTime, IGNORE_PENDING_REQUESTS, LOGGER, Interval, INCOMPLETE_TASK_NOTIFIER, DB_URI, alive, app, main_loop
 from .helper.ext_utils.fs_utils import start_cleanup, clean_all, exit_clean_up
 from .helper.ext_utils.telegraph_helper import telegraph
 from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
@@ -61,7 +61,7 @@ def stats(update, context):
             f'<b>💽 Memory Total : {mem_t}</b>\n'\
             f'<b>📉 Memory Free : {mem_a}</b>\n'\
             f'<b>📈 Memory Used : {mem_u}</b>\n'
-    sendMessage(stats, context.bot, update.message)
+    update.effective_message.reply_photo(IMAGE_URL, stats, context.bot, update.message, parse_mode=ParseMode.HTML)
 
 def start(update, context):
     buttons = ButtonMaker()
@@ -74,7 +74,7 @@ def start(update, context):
 Welcome | My Service is Ready For You
 Type /{BotCommands.HelpCommand} To See Available Commands
 '''
-        sendMarkup(start_string, context.bot, update.message, reply_markup)
+        update.effective_message.reply_photo(IMAGE_URL, start_string, context.bot, update.message, reply_markup)
     else:
         sendMarkup('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', context.bot, update.message, reply_markup)
 

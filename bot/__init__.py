@@ -575,6 +575,13 @@ try:
 except:
     SEARCH_PLUGINS = None
 
+try:
+    IMAGE_URL = getConfig('IMAGE_URL')
+    if len(IMAGE_URL) == 0:
+        IMAGE_URL = 'https://telegra.ph/file/2326855aa5ba1d2520e47.jpg'
+except KeyError:
+    IMAGE_URL = 'https://telegra.ph/file/2326855aa5ba1d2520e47.jpg'
+
 updater = tgUpdater(token=BOT_TOKEN, request_kwargs={'read_timeout': 20, 'connect_timeout': 15})
 bot = updater.bot
 dispatcher = updater.dispatcher
