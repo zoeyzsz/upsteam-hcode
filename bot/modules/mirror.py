@@ -212,7 +212,7 @@ class MirrorListener:
                 msg += f'\n<b>👾 Corrupted Files :- {typ}</b>'
             msg += f'\n<b>⏳ Estimated :- {get_readable_time(time() - self.message.date.timestamp())}</b>'
             msg += f'\n<b>✅ Status :- Successfully Uploaded</b>'
-            msg += f'\n\n<b>👤 By Username :- {self.tag} ✨</b>'
+            msg += f'\n\n<b>👤 By :- {self.tag} ✨</b>'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -232,7 +232,7 @@ class MirrorListener:
                 msg += f'\n<b>📄 Total Files :- {files}</b>'
             msg += f'\n<b>⏳ Estimated :- {get_readable_time(time() - self.message.date.timestamp())}</b>'
             msg += f'\n<b>✅ Status :- Successfully Uploaded</b>'
-            msg += f'\n\n<b>👤 By Username :- {self.tag} ✨</b>\n\n'
+            msg += f'\n\n<b>👤 By :- {self.tag} ✨</b>\n\n'
             buttons = ButtonMaker()
             link = short_url(link)
             buttons.buildbutton("⚡ Google Drive ⚡", link)
