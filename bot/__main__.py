@@ -76,7 +76,7 @@ Type /{BotCommands.HelpCommand} To See Available Commands
 '''
         update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode = 'Markdown', reply_markup=reply_markup)
     else:
-        sendMarkup('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', context.bot, update.message, reply_markup)
+        update.effective_message.reply_photo('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', IMAGE_URL, context.bot, update.message, parse_mode = 'Markdown', reply_markup=reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("<b>🔄 Restarting, Please Wait! 🔄</b>", context.bot, update.message)
@@ -199,7 +199,7 @@ def bot_help(update, context):
     button = ButtonMaker()
     button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
-    update.effective_message.reply_photo(IMAGE_URL, help_string, context.bot, update.message, reply_markup, parse_mode='HTMl')
+    sendMarkup(help_string, context.bot, update.message, reply_markup)
 
 def main():
     start_cleanup()
