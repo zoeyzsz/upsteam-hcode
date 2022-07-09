@@ -216,17 +216,18 @@ class MirrorListener:
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
-                fmsg = '\n\n<b>📄 Link of Your Files ⤵️</b>\n\n'
+                fmsg = '\n\n<b>📄 Link of Your Files :-</b>\n\n'
                 for index, (link, name) in enumerate(files.items(), start=1):
                     fmsg += f"{index}. <a href='{link}'>{name}</a>\n"
                     if len(fmsg.encode() + msg.encode()) > 4000:
                         sendMessage(msg + fmsg, self.bot, self.message)
                         sleep(1)
-                        fmsg = ''
+                        fmsg = '\n<b>🙎🏻‍♂️ By :- {self.tag} ✨</b>'
                 if fmsg != '':
                     sendMessage(msg + fmsg, self.bot, self.message)
         else:
             msg += f'\n<b>🏷 Type Files :- {typ}</b>'
+            msg += f'\n<b>🗂 Total Folders :- 0</b>'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
                 msg += f'\n<b>🗂 Total Folders :- {folders}</b>'
                 msg += f'\n<b>📄 Total Files :- {files}</b>'

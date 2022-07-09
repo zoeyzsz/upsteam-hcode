@@ -29,7 +29,7 @@ def countNode(update, context):
         gd = GoogleDriveHelper()
         result = gd.count(link)
         deleteMessage(context.bot, msg)
-        cc = f'\n\n<b>🙎🏻‍♂️ By : {tag} ✨</b>'
+        cc = f'\n<b>✅ Status :- Successfully Counted</b>\n\n<b>🙎🏻‍♂️ By :- {tag} ✨</b>'
         sendMessage(result + cc, context.bot, update.message)
     else:
         sendMessage('🚫 <b>Send Me GDTOT or Google Drive Shareable Link </b> 🚫', context.bot, update.message)

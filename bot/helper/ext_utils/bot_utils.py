@@ -172,7 +172,7 @@ def get_readable_message():
                 except:
                     pass
                 try:
-                    msg += f"\n<b>🔍 Tracker :- 🧲 Seeds : {download.torrent_info().num_seeds}</b>" \
+                    msg += f"\n<b>🔍 Tracker :- 🧲 Seeds :- {download.torrent_info().num_seeds}</b>" \
                             f" | <b>🧲 Leechs :- {download.torrent_info().num_leechs}</b>"
                 except:
                     pass
