@@ -43,7 +43,7 @@ class EngineStatus:
     STATUS_ARIA = "Aria2c V.1.35.0"
     STATUS_GD = "Google Drive API V.2.51.0"
     STATUS_MEGA = "MegaSDK V.3.12.0"
-    STATUS_QB = "qBittorrent V.4.3.9"
+    STATUS_QB = "qBitTorrent V.4.3.9"
     STATUS_TG = "Pyrogram V.2.0.27"
     STATUS_YT = "YTDL V.22.5.18"
     STATUS_EXT = "Extract | pExtract"
