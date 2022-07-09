@@ -372,8 +372,8 @@ class GoogleDriveHelper:
                     mime_type = 'File'
                 msg += f'\n<b>📥 Total Size :- {get_readable_file_size(int(meta.get("size", 0)))}</b>'
                 msg += f'\n<b>🏷 Type Files :- {mime_type}</b>'
-                msg += f'\n<b>🗂 Total Folders :- 0</b>'
-                msg += f'\n<b>📄 Total Files :- {self.__total_files}</b>'
+                msg += f'\n<b>🗂 Total Folders :- {get_readable_file_size(self.__total_bytes)}</b>'
+                msg += f'\n<b>📄 Total Files :- 1</b>'
                 if INDEX_URL is not None:
                     url_path = rquote(f'{file.get("name")}', safe='')
                     url = f'{INDEX_URL}/{url_path}'
@@ -704,7 +704,7 @@ class GoogleDriveHelper:
             if mime_type == self.__G_DRIVE_DIR_MIME_TYPE:
                 self.__gDrive_directory(meta)
                 msg += f'<b>📂 Name :-</b> <code>{name}</code>'
-                msg += f'\n<b>📄 Total Files :- {get_readable_file_size(self.__total_bytes)}</b>'
+                msg += f'\n<b>📥 Total Size :- {get_readable_file_size(self.__total_bytes)}</b>'
                 msg += '\n<b>🏷 Type Files :- Folder / 🗂</b>'
                 msg += f'\n<b>🗂 Total Folders :- {self.__total_folders}</b>'
             else:
@@ -713,7 +713,7 @@ class GoogleDriveHelper:
                     mime_type = 'File'
                 self.__total_files += 1
                 self.__gDrive_file(meta)
-                msg += f'\n<b>📄 Total Files :- {get_readable_file_size(self.__total_bytes)}</b>'
+                msg += f'\n<b>📥 Total Size :- {get_readable_file_size(self.__total_bytes)}</b>'
                 msg += f'\n<b>🏷 Type Files :- {mime_type}</b>'
             msg += f'\n<b>📄 Total Files :- {self.__total_files}</b>'
         except Exception as err:

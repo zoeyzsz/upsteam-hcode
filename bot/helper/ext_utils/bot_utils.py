@@ -364,7 +364,8 @@ def bot_sys_stats():
 📤 Upload :- {sent}
 🖥 CPU :- {cpu}%
 ⚙️ RAM :- {mem}%
-🗃 DISK :- {total}
+🗃 Disk :- {total}
+📈 Disk Used :- {used}
 📉 Disk Free :- {free}
 
 """
