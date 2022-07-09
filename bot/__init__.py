@@ -568,6 +568,13 @@ if ospath.exists('drive_folder'):
             except:
                 INDEX_URLS.append(None)
 try:
+    IMAGE_URL = getConfig('IMAGE_URL')
+    if len(IMAGE_URL) == 0:
+        IMAGE_URL = 'https://telegra.ph/file/2326855aa5ba1d2520e47.jpg'
+except KeyError:
+    IMAGE_URL = 'https://telegra.ph/file/2326855aa5ba1d2520e47.jpg'
+
+try:
     SEARCH_PLUGINS = getConfig('SEARCH_PLUGINS')
     if len(SEARCH_PLUGINS) == 0:
         raise KeyError
