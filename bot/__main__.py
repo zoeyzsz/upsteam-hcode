@@ -61,7 +61,7 @@ def stats(update, context):
             f'<b>💽 Memory Total : {mem_t}</b>\n'\
             f'<b>📉 Memory Free : {mem_a}</b>\n'\
             f'<b>📈 Memory Used : {mem_u}</b>\n'
-    update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode='HTMl')
 
 def start(update, context):
     buttons = ButtonMaker()
@@ -74,7 +74,7 @@ def start(update, context):
 Welcome | My Service is Ready For You
 Type /{BotCommands.HelpCommand} To See Available Commands
 '''
-        update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+        update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode = 'Markdown', reply_markup=reply_markup)
     else:
         sendMarkup('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', context.bot, update.message, reply_markup)
 
