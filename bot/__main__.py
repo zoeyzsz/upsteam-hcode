@@ -71,7 +71,7 @@ def start(update, context):
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-Welcome | I'm Ready Help You 🙂
+Welcome | I'm Ready Help You 😊
 Type /{BotCommands.HelpCommand} To View Available Commands
 '''
         update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode = 'Markdown', reply_markup=reply_markup)
@@ -178,6 +178,9 @@ help = telegraph.create_page(
     )["path"]
 
 help_string = f'''
+
+Only For Admin & Sudo User
+
 /{BotCommands.PingCommand} : Check Active
 
 /{BotCommands.AuthorizeCommand} : Authorize A Chat or User to Use The Bot
@@ -197,7 +200,7 @@ help_string = f'''
 
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton("🪧 Users Commands 🪧", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
