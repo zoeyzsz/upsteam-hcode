@@ -76,7 +76,7 @@ Type /{BotCommands.HelpCommand} To See Available Commands
 '''
         update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode = 'Markdown', reply_markup=reply_markup)
     else:
-        update.effective_message.reply_photo('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', IMAGE_URL, context.bot, update.message, parse_mode = 'Markdown', reply_markup=reply_markup)
+        update.effective_message.reply_photo('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', IMAGE_URL, start_string, parse_mode = 'Markdown', reply_markup=reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("<b>🔄 Restarting, Please Wait! 🔄</b>", context.bot, update.message)
