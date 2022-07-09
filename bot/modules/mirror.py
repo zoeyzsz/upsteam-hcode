@@ -210,6 +210,7 @@ class MirrorListener:
             msg += f'\n<b>📄 Total Files :- {folders}</b>'
             if typ != 0:
                 msg += f'\n<b>👾 Corrupted Files :- {typ}</b>'
+            msg += f'\n<b>🗂 Total Folders :- 0</b>'
             msg += f'\n<b>⏳ Estimated :- {get_readable_time(time() - self.message.date.timestamp())}</b>'
             msg += f'\n<b>✅ Status :- Successfully Uploaded</b>'
             msg += f'\n\n<b>🙎🏻‍♂️ By :- {self.tag} ✨</b>'
@@ -227,7 +228,7 @@ class MirrorListener:
                     sendMessage(msg + fmsg, self.bot, self.message)
         else:
             msg += f'\n<b>🏷 Type Files :- {typ}</b>'
-            msg += f'\n<b>🗂 Total Folders :- 0</b>'
+            msg += f'\n<b>📄 Total Files :- 1</b>'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
                 msg += f'\n<b>🗂 Total Folders :- {folders}</b>'
                 msg += f'\n<b>📄 Total Files :- {files}</b>'

@@ -372,7 +372,7 @@ class GoogleDriveHelper:
                     mime_type = 'File'
                 msg += f'\n<b>📥 Total Size :- {get_readable_file_size(int(meta.get("size", 0)))}</b>'
                 msg += f'\n<b>🏷 Type Files :- {mime_type}</b>'
-                msg += f'\n<b>🗂 Total Folders :- {get_readable_file_size(self.__total_bytes)}</b>'
+                msg += f'\n<b>🗂 Total Folders :- 0</b>'
                 msg += f'\n<b>📄 Total Files :- 1</b>'
                 if INDEX_URL is not None:
                     url_path = rquote(f'{file.get("name")}', safe='')
