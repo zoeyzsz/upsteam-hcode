@@ -71,12 +71,12 @@ def start(update, context):
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-Welcome | My Service is Ready For You
-Type /{BotCommands.HelpCommand} To See Available Commands
+Welcome | I'm Ready Help You 🙂
+Type /{BotCommands.HelpCommand} To View Available Commands
 '''
         update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode = 'Markdown', reply_markup=reply_markup)
     else:
-        update.effective_message.reply_photo('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', IMAGE_URL, start, parse_mode = 'Markdown', reply_markup=reply_markup)
+        sendMarkup('<b>🚫 Oops! You Are Not Authorized User 🚫</b>', context.bot, update.message, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("<b>🔄 Restarting, Please Wait! 🔄</b>", context.bot, update.message)

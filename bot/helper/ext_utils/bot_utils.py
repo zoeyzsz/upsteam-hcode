@@ -359,11 +359,12 @@ def bot_sys_stats():
     stats = f""
     stats += f"""
 
-⏰ Uptime : {currentTime}
-📥 D : {recv} | 📤 U : {sent}
-🖥 CPU : {cpu}%
-⚙️ RAM : {mem}%
-🗃 DISK : {total} | 📉 Free : {free}
+⏰ Uptime   : {currentTime}
+📥 Download : {recv}
+📤 Upload   : {sent}
+🖥 CPU       : {cpu}%
+⚙️ RAM      : {mem}%
+🗃 DISK      : {total} | 📉 Free : {free}
 
 """
     return stats
