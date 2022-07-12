@@ -45,22 +45,22 @@ def stats(update, context):
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
     stats = f'<b>📊 Time Calculation 📊</b>\n\n'\
-            f'<b>⏰ Uptime : {currentTime}</b>\n'\
-            f'<b>🖥 OS Uptime : {osUptime}</b>\n\n'\
+            f'<b>⏰ Uptime :- {currentTime}</b>\n'\
+            f'<b>🖥 OS Uptime :- {osUptime}</b>\n\n'\
 			f'<b>📊 Data Usage 📊</b>\n\n'\
-            f'<b>💨 Storage : {total}</b>\n'\
-            f'<b>📈 Used : {used}</b>\n<b>📉 Free : {free}</b>\n'\
-            f'<b>📤 Upload : {sent}</b>\n<b>📥 Download : {recv}</b>\n\n'\
+            f'<b>💨 Storage :- {total}</b>\n'\
+            f'<b>📈 Used :- {used}</b>\n<b>📉 Free : {free}</b>\n'\
+            f'<b>📤 Upload :- {sent}</b>\n<b>📥 Download : {recv}</b>\n\n'\
 			f'<b>📊 Performance Meter 📊</b>\n\n'\
-            f'<b>🖥 CPU : {cpuUsage}%</b>\n'\
-            f'<b>⚙️ RAM : {mem_p}%</b>\n'\
-            f'<b>🗃 DISK : {disk}%</b>\n'\
-            f'<b>🪅 Physical Cores : {p_core}</b>\n'\
-            f'<b>🎛 Total Cores : {t_core}</b>\n'\
-            f'<b>🛡 Swap Memory : {swap_t}</b> | <b>⏳ Used : {swap_p}%</b>\n'\
-            f'<b>💽 Memory Total : {mem_t}</b>\n'\
-            f'<b>📉 Memory Free : {mem_a}</b>\n'\
-            f'<b>📈 Memory Used : {mem_u}</b>\n'
+            f'<b>🖥 CPU :- {cpuUsage}%</b>\n'\
+            f'<b>⚙️ RAM :- {mem_p}%</b>\n'\
+            f'<b>🗃 DISK :- {disk}%</b>\n'\
+            f'<b>🪅 Physical Cores :- {p_core}</b>\n'\
+            f'<b>🎛 Total Cores :- {t_core}</b>\n'\
+            f'<b>🛡 Swap Memory :- {swap_t}</b> | <b>⏳ Used : {swap_p}%</b>\n'\
+            f'<b>💽 Memory Total :- {mem_t}</b>\n'\
+            f'<b>📉 Memory Free :- {mem_a}</b>\n'\
+            f'<b>📈 Memory Used :- {mem_u}</b>\n'
     update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode='HTMl')
 
 def start(update, context):
